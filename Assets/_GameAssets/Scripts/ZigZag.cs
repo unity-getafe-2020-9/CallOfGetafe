@@ -5,11 +5,6 @@ using UnityEngine;
 public class ZigZag : MonoBehaviour
 {
     public float yOffset;
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         //Time.realtimeSinceStartup;
