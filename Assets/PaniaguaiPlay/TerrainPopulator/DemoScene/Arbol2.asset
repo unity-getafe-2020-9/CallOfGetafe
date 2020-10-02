@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461bc2ce64a15db449a8afa5938b0de6, type: 3}
+  m_Name: Arbol2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 919132149155446097, guid: 039e0aa5d8ff4c445b7f9330a99caa74, type: 3}
+  numberOfItems: 260
+  minScale: 2
+  maxScale: 5
+  yOffset: 0
+  randomXRotation: 0
+  randomYRotation: 1
+  randomZRotation: 0
