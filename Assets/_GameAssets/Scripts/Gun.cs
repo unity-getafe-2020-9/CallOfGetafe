@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -8,7 +9,7 @@ public class Gun : MonoBehaviour
     public Transform posInicio;
     public float fuerza;
     
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
