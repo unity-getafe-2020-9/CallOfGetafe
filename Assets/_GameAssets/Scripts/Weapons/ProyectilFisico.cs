@@ -10,7 +10,7 @@ public class ProyectilFisico : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            DumbEnemy de = collision.gameObject.GetComponent<DumbEnemy>();
+            Enemy de = collision.gameObject.GetComponent<Enemy>();
             de.RecibirDanyo(danyo);
             Destroy(gameObject);
         }

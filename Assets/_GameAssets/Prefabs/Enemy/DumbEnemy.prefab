@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 799197216}
   - component: {fileID: 799197215}
   - component: {fileID: 799197214}
+  - component: {fileID: 1065190185}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -262,6 +263,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1065190185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799197213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c420da97bbe1f43ac3ae696ea1b0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &929256401
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +600,7 @@ GameObject:
   - component: {fileID: 4820013922056349694}
   - component: {fileID: 4820013922056349693}
   - component: {fileID: 4820013922056349695}
+  - component: {fileID: 1166053593}
   m_Layer: 0
   m_Name: DumbEnemy
   m_TagString: Enemy
@@ -640,9 +654,110 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   salud: 100
   danyoInfringido: 5
-  velocidad: 1
+  velocidad: 4
   distanciaAtaque: 3
   sliderSalud: {fileID: 495629629}
+  prefabExplossion: {fileID: 2694133539651751015, guid: 4d48ccf8121876c40a3cc3273308099d,
+    type: 3}
+  explossionSound: {fileID: 8300000, guid: 4e5ab9e2b60ff4d4c807c7d8853f1143, type: 3}
+  painSound: {fileID: 8300000, guid: 361c5c881b758ce4f8ca593c8ef8eb43, type: 3}
+  points: 50
   tiempoEntreRotaciones: 3
   gradosRotacionMin: -100
   gradosRotacionMax: 100
+--- !u!82 &1166053593
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820013922056349692}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

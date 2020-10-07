@@ -15,6 +15,14 @@ public abstract class Enemy : MonoBehaviour
     private float distanciaAtaque;
     [SerializeField]
     private Slider sliderSalud;
+    [SerializeField]
+    private GameObject prefabExplossion;
+    [SerializeField]
+    private AudioClip explossionSound;
+    [SerializeField]
+    private AudioClip painSound;
+    [SerializeField]
+    private int points;
 
     void Start()
     {
@@ -38,11 +46,19 @@ public abstract class Enemy : MonoBehaviour
     }
     public void RecibirDanyo(int danyo)
     {
-        salud=salud-danyo;
+        GetComponent<AudioSource>().PlayOneShot(painSound);//PlayOneShot no para la reproducción anterior
+        salud =salud-danyo;
         sliderSalud.value = sliderSalud.maxValue - salud;
+        if (salud <= 0)
+        {
+            Morir();
+        }
     }
-    public void Morir()
+    protected void Morir()
     {
-
+        GameObject explosion = Instantiate(prefabExplossion, transform.position, transform.rotation);
+        explosion.GetComponent<AudioSource>().clip = explossionSound;
+        explosion.GetComponent<AudioSource>().Play();
+        Destroy(gameObject);
     }
 }
