@@ -201,7 +201,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1143, y: 522}
+  m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &799197216
 Canvas:
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 4820013922056349694}
   - component: {fileID: 4820013922056349693}
   - component: {fileID: 4820013922056349695}
-  - component: {fileID: 1166053593}
+  - component: {fileID: 7817954294156642415}
   m_Layer: 0
   m_Name: DumbEnemy
   m_TagString: Enemy
@@ -653,8 +653,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salud: 100
-  danyoInfringido: 5
-  velocidad: 4
+  danyoInfringido: 10
+  velocidad: 1
   distanciaAtaque: 3
   sliderSalud: {fileID: 495629629}
   prefabExplossion: {fileID: 2694133539651751015, guid: 4d48ccf8121876c40a3cc3273308099d,
@@ -662,10 +662,12 @@ MonoBehaviour:
   explossionSound: {fileID: 8300000, guid: 4e5ab9e2b60ff4d4c807c7d8853f1143, type: 3}
   painSound: {fileID: 8300000, guid: 361c5c881b758ce4f8ca593c8ef8eb43, type: 3}
   points: 50
+  prefabBlood: {fileID: 2959196073332642269, guid: bc98890f6028f444eaa7789bde5e2eeb,
+    type: 3}
   tiempoEntreRotaciones: 3
   gradosRotacionMin: -100
   gradosRotacionMax: 100
---- !u!82 &1166053593
+--- !u!82 &7817954294156642415
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -676,7 +678,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -686,9 +688,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -721,7 +723,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

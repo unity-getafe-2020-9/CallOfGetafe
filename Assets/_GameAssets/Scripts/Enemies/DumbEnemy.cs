@@ -12,8 +12,9 @@ public class DumbEnemy : Enemy
     [SerializeField]
     private float gradosRotacionMax;
 
-    private void Start()
+    protected void Start()
     {
+        base.Start();
         InvokeRepeating("Rotar", tiempoEntreRotaciones, tiempoEntreRotaciones);
     }
 
@@ -25,5 +26,11 @@ public class DumbEnemy : Enemy
     private void Rotar()
     {
         transform.Rotate(0, Random.Range(gradosRotacionMin, gradosRotacionMax), 0);
+    }
+
+    public override void Atacar()
+    {
+        player.GetComponent<PlayerManager>().RecibirDanyo(danyoInfringido);
+        Morir();
     }
 }

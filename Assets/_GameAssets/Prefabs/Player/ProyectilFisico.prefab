@@ -61,7 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429df4c34068139489faf7063dc15555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  danyo: 35
+  danyo: 10
+  timeToDestroy: 3
 --- !u!1 &3451538771607744481
 GameObject:
   m_ObjectHideFlags: 0
