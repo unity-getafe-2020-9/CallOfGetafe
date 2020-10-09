@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shootable
   - Enemy
+  - Llave
   layers:
   - Default
   - TransparentFX
