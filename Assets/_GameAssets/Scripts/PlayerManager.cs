@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -19,26 +20,14 @@ public class PlayerManager : MonoBehaviour
     private bool escudo;
     [SerializeField]
     private bool llave;
-
     [SerializeField]
     GameObject healthBar;
-
+    [SerializeField]
+    private int armaActiva = 0;
 
     private void Awake()
     {
         salud = saludMaxima;
-    }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown("Fire2"))
-        {
-            Camera.main.fieldOfView = 20;//HARDCODE = HATERS
-        } 
-        if (Input.GetButtonUp("Fire2"))
-        {
-            Camera.main.fieldOfView = 60;//HARCODE = HATERS
-        }
     }
 
     public void Disparar()
@@ -89,4 +78,40 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        //Selección de armas
+        for(int i = 1; i <= armas.Length; i++)
+        {
+            if (Input.GetKeyDown(i.ToString()))
+            {
+                ActivarArma(i-1);
+            } 
+        }
+
+        //Disparo
+        if (Input.GetButtonDown("Fire1"))
+        {
+            armas[armaActiva].GetComponent<Weapon>().TryShoot();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            armas[armaActiva].GetComponent<Weapon>().Reload();
+        }
+    }
+    public void ActivarArma(int idArma)
+    {
+        for(int i = 0; i < armas.Length; i++)
+        {
+            if (i == idArma)
+            {
+                armas[i].SetActive(true);
+                armaActiva = i;
+            } else
+            {
+                armas[i].SetActive(false);
+            }
+        }
+    }
+    
 }
