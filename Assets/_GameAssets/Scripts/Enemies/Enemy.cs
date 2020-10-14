@@ -52,20 +52,27 @@ public abstract class Enemy : MonoBehaviour
     {
 
     }
-    public void RecibirDanyo(int danyo, Vector3 position)
+    
+    //Sobrecarga del método RecibirDanyo
+    public void RecibirDanyo(int danyo)
     {
         GetComponent<AudioSource>().PlayOneShot(painSound);//PlayOneShot no para la reproducción anterior
-
-        salud =salud-danyo;
+        salud = salud - danyo;
         sliderSalud.value = sliderSalud.maxValue - salud;
         if (salud <= 0)
         {
             Morir();
-        } else
+        }
+    }
+    public void RecibirDanyo(int danyo, Vector3 position)
+    {
+        RecibirDanyo(danyo);
+        if (salud>0)
         {
             Sangrar(position);
         }
     }
+
     protected void Morir()
     {
         GameObject explosion = Instantiate(prefabExplossion, transform.position, transform.rotation);

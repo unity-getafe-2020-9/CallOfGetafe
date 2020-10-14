@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Lanzagranadas : Weapon
 {
+    public float force;
+    public GameObject prefabProyectil;
+    public Transform transformSpawner;
     public override void Shoot()
     {
         base.Shoot();
-        print("DISPARANDO LANZAGRANADAS");
+        GameObject proyectil = Instantiate(prefabProyectil, transformSpawner.position, transformSpawner.rotation);
+        proyectil.GetComponent<Rigidbody>().AddForce(transformSpawner.forward * force);
     }
 }
