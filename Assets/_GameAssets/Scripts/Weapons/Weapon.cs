@@ -21,6 +21,13 @@ public abstract class Weapon : MonoBehaviour
         audioSource = GetComponentInParent<AudioSource>();
     }
 
+    public void AgregarCargadores(int nc)
+    {
+        chargers += nc;//chargers = chagers + nc;
+        chargers = Mathf.Min(chargers, maxCharger);
+    }
+
+
     public void TryShoot()
     {
         if (CanShoot())

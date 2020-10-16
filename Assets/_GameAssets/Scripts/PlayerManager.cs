@@ -23,11 +23,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     GameObject healthBar;
     [SerializeField]
-    private int armaActiva = 0;
+    private int armaActiva;
 
     private void Awake()
     {
         salud = saludMaxima;
+        ActivarArma(armaActiva);
     }
 
     public void Disparar()
@@ -75,6 +76,12 @@ public class PlayerManager : MonoBehaviour
             */
             //Asignando un nuevo color
             GameObject.Find("ImageKey").GetComponent<Image>().color = Color.yellow;
+        }
+        if (other.gameObject.CompareTag("Cargador"))
+        {
+            int nc = other.gameObject.GetComponentInParent<CargadorGenerico>().numeroCargadores;
+            armas[armaActiva].GetComponent<Weapon>().AgregarCargadores(nc);
+            Destroy(other.gameObject);
         }
     }
 

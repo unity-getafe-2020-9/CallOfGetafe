@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Llave
   - Floor
+  - FxTemporaire
+  - Cargador
   layers:
   - Default
   - TransparentFX
