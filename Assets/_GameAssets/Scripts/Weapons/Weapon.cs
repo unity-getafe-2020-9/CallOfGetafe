@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public Text textAmmo;
+    public Text textChargers;
     public AudioClip acShoot;
     public AudioClip acReload;
     public AudioClip acStuck;
@@ -18,6 +21,8 @@ public abstract class Weapon : MonoBehaviour
 
     private void Awake()
     {
+        textAmmo = GameObject.Find("TextAmmo").GetComponent<Text>();
+        textChargers = GameObject.Find("TextChargers").GetComponent<Text>();
         audioSource = GetComponentInParent<AudioSource>();
     }
 
@@ -25,6 +30,7 @@ public abstract class Weapon : MonoBehaviour
     {
         chargers += nc;//chargers = chagers + nc;
         chargers = Mathf.Min(chargers, maxCharger);
+        RefreshUI();
     }
 
 
@@ -46,6 +52,7 @@ public abstract class Weapon : MonoBehaviour
             PlayReloadSound();
             ammos = maxAmmoByCharger;
             chargers--;
+            RefreshUI();
         }
     }
 
@@ -54,7 +61,8 @@ public abstract class Weapon : MonoBehaviour
         Invoke("ReactivarArma", cadency);
         PlayShootSound();
         ammos--;
-    }
+        RefreshUI();
+}
     public bool CanShoot()
     {
         /*
@@ -86,5 +94,11 @@ public abstract class Weapon : MonoBehaviour
     private void ReactivarArma()
     {
         isWaiting = false;
+    }
+
+    private void RefreshUI()
+    {
+        textAmmo.text = ammos.ToString();
+        textChargers.text = chargers.ToString();
     }
 }

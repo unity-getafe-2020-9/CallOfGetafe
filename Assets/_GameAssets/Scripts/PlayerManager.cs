@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private GameObject[] armas;
     [SerializeField]
+    private GameObject[] iconosArmas;
+    [SerializeField]
     private int puntuacion;
     [SerializeField]
     private bool escudo;
@@ -24,13 +26,18 @@ public class PlayerManager : MonoBehaviour
     GameObject healthBar;
     [SerializeField]
     private int armaActiva;
+    [SerializeField]
+    protected Text textAmmo;
+    [SerializeField]
+    protected Text textChargers;
+    [SerializeField]
+    private Image bloodImage;
 
     private void Awake()
     {
         salud = saludMaxima;
         ActivarArma(armaActiva);
     }
-
     public void Disparar()
     {
 
@@ -59,6 +66,10 @@ public class PlayerManager : MonoBehaviour
     {
         salud = salud - danyo;
         healthBar.GetComponent<Image>().fillAmount = salud / ((float)saludMaxima);
+        //Cambio en el color de la sangre
+        Color colorSangre = bloodImage.color;//Hacemos una copia del color
+        colorSangre.a = 1 - (salud / (float)saludMaxima);//Modificamos el alpha
+        bloodImage.color = colorSangre;//Hacemos el set del nuevo color modificado
     }
 
     private void OnTriggerEnter(Collider other)
@@ -113,10 +124,20 @@ public class PlayerManager : MonoBehaviour
             if (i == idArma)
             {
                 armas[i].SetActive(true);
+                iconosArmas[i].SetActive(true);
                 armaActiva = i;
+
+                int chargers = armas[i].GetComponent<Weapon>().chargers;
+                int ammos = armas[i].GetComponent<Weapon>().ammos;
+
+                textAmmo.text = ammos.ToString();
+                textChargers.text = "x"+chargers.ToString();
+
+
             } else
             {
                 armas[i].SetActive(false);
+                iconosArmas[i].SetActive(false);
             }
         }
     }
