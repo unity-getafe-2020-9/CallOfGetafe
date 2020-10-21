@@ -61,7 +61,7 @@ public abstract class Enemy : MonoBehaviour
         sliderSalud.value = sliderSalud.maxValue - salud;
         if (salud <= 0)
         {
-            Morir();
+            Morir(false);
         }
     }
     public void RecibirDanyo(int danyo, Vector3 position)
@@ -73,8 +73,12 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    protected void Morir()
+    protected void Morir(bool autodestruccion)
     {
+        if (autodestruccion == false)
+        {
+            GameManager.IncrementarPuntuacion(points);
+        }
         GameObject explosion = Instantiate(prefabExplossion, transform.position, transform.rotation);
         explosion.GetComponent<AudioSource>().clip = explossionSound;
         explosion.GetComponent<AudioSource>().Play();

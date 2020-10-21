@@ -38,13 +38,53 @@ public class PlayerManager : MonoBehaviour
         salud = saludMaxima;
         ActivarArma(armaActiva);
     }
+    private void Update()
+    {
+        ElegirArma();
+        Disparar();
+        Recargar();
+    }
+    public void ElegirArma()
+    {
+        //Selección de armas
+        for (int i = 1; i <= armas.Length; i++)
+        {
+            if (Input.GetKeyDown(i.ToString()))
+            {
+                ActivarArma(i - 1);
+            }
+        }
+    }
     public void Disparar()
     {
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            armas[armaActiva].GetComponent<Weapon>().TryShoot();
+        }
+    }
+    public void Recargar()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            armas[armaActiva].GetComponent<Weapon>().Reload();
+        }
+    }
+    public void RecibirDanyo(int danyo)
+    {
+        salud = salud - danyo;
+        healthBar.GetComponent<Image>().fillAmount = salud / ((float)saludMaxima);
+        //Cambio en el color de la sangre
+        Color colorSangre = bloodImage.color;//Hacemos una copia del color
+        colorSangre.a = 1 - (salud / (float)saludMaxima);//Modificamos el alpha
+        bloodImage.color = colorSangre;//Hacemos el set del nuevo color modificado
+        if (salud <= 0)
+        {
+            Morir();
+        }
     }
     public void Morir()
     {
-
+        GameObject.Find("GameManager").GetComponent<GameManager>().HacerGameOver();
     }
     public void AbrirPuertas()
     {
@@ -62,15 +102,7 @@ public class PlayerManager : MonoBehaviour
     {
     }
     
-    public void RecibirDanyo(int danyo)
-    {
-        salud = salud - danyo;
-        healthBar.GetComponent<Image>().fillAmount = salud / ((float)saludMaxima);
-        //Cambio en el color de la sangre
-        Color colorSangre = bloodImage.color;//Hacemos una copia del color
-        colorSangre.a = 1 - (salud / (float)saludMaxima);//Modificamos el alpha
-        bloodImage.color = colorSangre;//Hacemos el set del nuevo color modificado
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -96,27 +128,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //Selección de armas
-        for(int i = 1; i <= armas.Length; i++)
-        {
-            if (Input.GetKeyDown(i.ToString()))
-            {
-                ActivarArma(i-1);
-            } 
-        }
-
-        //Disparo
-        if (Input.GetButtonDown("Fire1"))
-        {
-            armas[armaActiva].GetComponent<Weapon>().TryShoot();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            armas[armaActiva].GetComponent<Weapon>().Reload();
-        }
-    }
+    
     public void ActivarArma(int idArma)
     {
         for(int i = 0; i < armas.Length; i++)

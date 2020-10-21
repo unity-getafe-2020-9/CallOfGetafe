@@ -31,6 +31,6 @@ public class DumbEnemy : Enemy
     public override void Atacar()
     {
         player.GetComponent<PlayerManager>().RecibirDanyo(danyoInfringido);
-        Morir();
+        Morir(true);
     }
 }
