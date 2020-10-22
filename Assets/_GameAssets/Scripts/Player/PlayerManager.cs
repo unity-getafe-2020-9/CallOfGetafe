@@ -72,15 +72,19 @@ public class PlayerManager : MonoBehaviour
     public void RecibirDanyo(int danyo)
     {
         salud = salud - danyo;
+        PintarSalud();
+        if (salud <= 0)
+        {
+            Morir();
+        }
+    }
+    private void PintarSalud()
+    {
         healthBar.GetComponent<Image>().fillAmount = salud / ((float)saludMaxima);
         //Cambio en el color de la sangre
         Color colorSangre = bloodImage.color;//Hacemos una copia del color
         colorSangre.a = 1 - (salud / (float)saludMaxima);//Modificamos el alpha
         bloodImage.color = colorSangre;//Hacemos el set del nuevo color modificado
-        if (salud <= 0)
-        {
-            Morir();
-        }
     }
     public void Morir()
     {
@@ -90,9 +94,11 @@ public class PlayerManager : MonoBehaviour
     {
 
     }
-    public void RecuperarSalud()
+    public void RecuperarSalud(int incSalud)
     {
-
+        salud += incSalud;
+        salud = Mathf.Min(salud, saludMaxima);
+        PintarSalud();
     }
     public void CogerEscudo()
     {
@@ -101,9 +107,6 @@ public class PlayerManager : MonoBehaviour
     public void PerderEscudo()
     {
     }
-    
-    
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Llave"))
@@ -127,8 +130,6 @@ public class PlayerManager : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-
-    
     public void ActivarArma(int idArma)
     {
         for(int i = 0; i < armas.Length; i++)
@@ -153,5 +154,15 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-    
+    public bool TieneLaSaludATope()
+    {
+        if (salud>=saludMaxima)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+
+    }
 }

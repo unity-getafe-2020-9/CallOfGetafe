@@ -4,20 +4,41 @@ using UnityEngine;
 
 public class PowerSphere : MonoBehaviour
 {
-    [SerializeField]
-    GameObject panel;
+    public int aportacionSalud;
+    public float delayAcumulacion;
+    private GameObject player;
+    private PlayerManager pm;
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+        pm = player.GetComponent<PlayerManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.name=="Player")
         {
-            panel.SetActive(true);
+            //Comienza la carga
+            StartCoroutine("CargarSalud");
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.name == "Player")
         {
-            panel.SetActive(false);
+            //Detiene la carga
+            StopAllCoroutines();
+        }
+    }
+
+    IEnumerator CargarSalud()
+    {
+        //while(true)
+        while (!pm.TieneLaSaludATope())
+        {
+            pm.RecuperarSalud(aportacionSalud);
+            yield return new WaitForSeconds(delayAcumulacion);
+            //yield return null;//Sin demora
         }
     }
 }

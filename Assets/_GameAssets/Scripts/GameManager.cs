@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     private static int puntuacion = 0;
     private GameObject player;
-    public enum Estado { Jugando, Pausado, Nightmare }
+    public enum Estado { Jugando, Pausado, Nightmare, GameOver }
     private static Estado estado = Estado.Jugando;
 
     [SerializeField]
@@ -23,15 +23,21 @@ public class GameManager : MonoBehaviour
 
     public void HacerGameOver()
     {
-        /*
-         * - GameOver
-                -> Paramos todo
-                -> Mostramos GameOver
-                -> Menú (Restart | Menú | Load)
-        */
+        //Cambiamos el estado
+        estado = Estado.GameOver;
+        
+        //Poner el timescale a 0 y desactivar los scripts del player
         DetenerJuego();
+
+        //Mostrar el texto del game over
         textoGameOver.enabled = true;
+
+        //Activar el menú
         panelMenu.SetActive(true);
+        
+        //Desbloqueamos el cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public static int GetPuntuacion()
