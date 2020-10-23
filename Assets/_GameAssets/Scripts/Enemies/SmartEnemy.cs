@@ -11,7 +11,9 @@ public class SmartEnemy : Enemy
     [SerializeField]
     private float gradosRotacionMax;
     [SerializeField]
-    private float distanciaSeguimiento;
+    protected float distanciaSeguimiento;
+    [SerializeField]
+    private float incrementoVelocidadAtaque;
 
     private float velocidadActual;
 
@@ -28,7 +30,7 @@ public class SmartEnemy : Enemy
         if (CalcularDistanciaAlPlayer() <= distanciaSeguimiento)
         {
             transform.LookAt(target);
-            velocidadActual = velocidad * 2;//Hardcode
+            velocidadActual = velocidad * incrementoVelocidadAtaque;
         } else
         {
             velocidadActual = velocidad;

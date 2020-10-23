@@ -35,7 +35,7 @@ public abstract class Enemy : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Mover();
         float distancia = CalcularDistanciaAlPlayer();

@@ -46,3 +46,4 @@ MonoBehaviour:
   prefabEnemy: {fileID: 4820013922056349692, guid: edf89cd9f69ab7648a1a561dc389269c,
     type: 3}
   tiempoEntreInstancias: 5
+  numeroMaximoEnemigos: 0

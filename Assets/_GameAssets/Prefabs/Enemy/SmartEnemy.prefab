@@ -176,6 +176,7 @@ MonoBehaviour:
   gradosRotacionMin: -180
   gradosRotacionMax: 180
   distanciaSeguimiento: 25
+  incrementoVelocidadAtaque: 2
 --- !u!1 &3908886517518658077
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ GameObject:
   - component: {fileID: 6925236883054188885}
   - component: {fileID: 3838663540368131300}
   - component: {fileID: 8158658413187664495}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6261936547439893755}
   - component: {fileID: 5529185217344085757}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5205,7 +5206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1209132275459586577}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5241,7 +5242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2199788176221299998}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5279,7 +5280,7 @@ GameObject:
   - component: {fileID: 218854567765033742}
   - component: {fileID: 6601240524266226780}
   - component: {fileID: 8600374836710423163}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5355,7 +5356,7 @@ GameObject:
   - component: {fileID: 4530121187921791515}
   - component: {fileID: 4583887922487770547}
   - component: {fileID: 3794012292000722235}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5465,7 +5466,7 @@ GameObject:
   - component: {fileID: 765717469340844753}
   - component: {fileID: 4325308603407238346}
   - component: {fileID: 4591855593157011276}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
