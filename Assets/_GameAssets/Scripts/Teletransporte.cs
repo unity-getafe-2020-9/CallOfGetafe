@@ -11,7 +11,14 @@ public class Teletransporte : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneName);
+            //Condición que evalue que tenemos la llave
+            if (GameManager.hasKey == true)
+            {
+                GameManager.CargarEscena(sceneName);
+            } else
+            {
+                //Avisa al usuario de que no tiene llave
+            }
         }
     }
 }

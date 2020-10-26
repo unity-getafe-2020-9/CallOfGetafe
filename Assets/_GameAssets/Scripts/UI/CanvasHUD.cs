@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManagerScript : MonoBehaviour
+public class CanvasHUD : MonoBehaviour
 {
-    private static SoundManagerScript _instance;
+    private static CanvasHUD _instance;
     private void Awake()
     {
+        //Patrón Singleton
         if (_instance == null)
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
-        } else
+        }
+        else
         {
             Destroy(this.gameObject);
         }
     }
-    
 }

@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class LookAtScript : MonoBehaviour
 {
-    [Tooltip("El GameObject al que va a mirar el forward")]
-    public GameObject target;
+    [Tooltip("El Nombre del GameObject al que va a mirar el forward")]
+    public string nombre;
+    private GameObject target;
+
+    private void Awake()
+    {
+        target = GameObject.Find(nombre);
+    }
 
     void Update()
     {

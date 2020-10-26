@@ -21,6 +21,52 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject panelMenu;
 
+    public static bool hasKey = false;
+
+    private static GameManager _instance;
+
+    private void Awake()
+    {
+        //Patrón Singleton
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    private void Start()
+    {
+        Time.timeScale = 1;
+        player = GameObject.Find("Player");
+    }
+    private void Update()
+    {
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (estado == Estado.Jugando)
+            {
+                PausarJuego();
+            }
+            else if (estado == Estado.Pausado)
+            {
+                DespausarJuego();
+            }
+        }
+    }
+
+    public static void CargarEscena(string nombreEscena)
+    {
+        SceneManager.LoadScene(nombreEscena);
+    }
+
     public void HacerGameOver()
     {
         //Cambiamos el estado
@@ -49,23 +95,7 @@ public class GameManager : MonoBehaviour
         puntuacion = value;
         GameObject.Find("TextPoints").GetComponent<Text>().text = puntuacion.ToString();
     }
-    private void Start()
-    {
-        Time.timeScale = 1;
-        player = GameObject.Find("Player");
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (estado == Estado.Jugando) {
-                PausarJuego();
-            } else if (estado == Estado.Pausado)
-            {
-                DespausarJuego();
-            }
-        }
-    }
+    
     public static void IncrementarPuntuacion(int puntos)
     {
         SetPuntuacion(GetPuntuacion() + puntos);

@@ -33,11 +33,24 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private Image bloodImage;
 
+    private static PlayerManager _instance;
     private void Awake()
     {
+        //Patrón Singleton
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         salud = saludMaxima;
         ActivarArma(armaActiva);
     }
+
+    
     private void Update()
     {
         ElegirArma();
@@ -122,6 +135,7 @@ public class PlayerManager : MonoBehaviour
             */
             //Asignando un nuevo color
             GameObject.Find("ImageKey").GetComponent<Image>().color = Color.yellow;
+            GameManager.hasKey = true;
         }
         if (other.gameObject.CompareTag("Cargador"))
         {
