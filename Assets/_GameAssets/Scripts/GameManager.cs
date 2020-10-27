@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void HacerGameOver()
     {
+        print("Game over");
         //Cambiamos el estado
         estado = Estado.GameOver;
         
